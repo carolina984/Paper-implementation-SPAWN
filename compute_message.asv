@@ -1,0 +1,13 @@
+function [message] = compute_message(neighbor_belief, internode_samples, intranode_samples, range_measurement, noise)
+
+ratio_samples  = intranode_samples/internode_samples;
+neighbor_belief = repmat(neighbor_belief,ratio_samples,1);
+
+message = zeros(intranode_samples, 2);
+
+for i = 1:1:intranode_samples
+    theta = rand * 2 * pi;
+    message(i, :) = neighbor_belief(i, :) + ((range_measurement) ) * [sin(theta), cos(theta)]; %+ noise
+end
+
+end

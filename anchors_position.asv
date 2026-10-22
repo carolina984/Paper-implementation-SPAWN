@@ -1,0 +1,11 @@
+anchors = anchors_data();
+
+
+scatter(anchors(:,1), anchors(:,2), 50, 's')
+axis([0 100 0 100])
+axis square
+
+xlabel('x [m]') 
+ylabel('y [m]') 
+
+grid on
