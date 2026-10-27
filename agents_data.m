@@ -3,8 +3,10 @@ rng(0)
 
 agents_pos = zeros(n_agents,2);
 
-for i = 1:1:n_agents
-    agents_pos(i, :) = [randi(square_size), randi(square_size)];
-end
+% for i = 1:1:n_agents
+%     agents_pos(i, :) = [randi(square_size), randi(square_size)];
+% end
+
+agents_pos(:, :) = square_size*rand(n_agents,2);
 
 end

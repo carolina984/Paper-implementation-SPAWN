@@ -1,4 +1,4 @@
-function [samples_kept] = product_messages(iteration_number, current_belief, messages, intranode_sample, internode_samples, k, M )
+function [samples_kept, message_to_broadcast] = product_messages(iteration_number, current_belief, messages, intranode_sample, internode_samples, k, M, h)
 num_messages = numel(messages);
 samples_drawn_total = [];
 draw_from_message = ceil(k * M/(num_messages));
@@ -35,7 +35,7 @@ else
     prod_v = ones(size(samples_drawn_total,1), 1);
     sum_v  = zeros(size(samples_drawn_total,1), 1);
     for j = 1:num_messages
-        v = evaluate_all_points(samples_drawn_total, messages{j}, 0.5);
+        v = evaluate_all_points(samples_drawn_total, messages{j}, h);
         prod_v = prod_v .* v;
         sum_v  = sum_v  + v;
     end
@@ -47,5 +47,9 @@ else
     samples_kept = samples_drawn_total(w, :);
     samples_kept(:, 3) = 1/intranode_sample;
     samples_kept(:, 4) = 1;
+
+    %compute new message
+    message_to_broadcast = intrasamples_to_intersamples(samples_kept, internode_samples);
+
 end
 end
