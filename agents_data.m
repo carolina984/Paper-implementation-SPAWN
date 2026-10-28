@@ -7,6 +7,6 @@ agents_pos = zeros(n_agents,2);
 %     agents_pos(i, :) = [randi(square_size), randi(square_size)];
 % end
 
-agents_pos(:, :) = square_size*rand(n_agents,2);
+agents_pos(:, :) = randi(square_size, n_agents, 2); %square_size*rand(n_agents,2);
 
 end

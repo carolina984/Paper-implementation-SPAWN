@@ -4,16 +4,16 @@ a = 0;
 b = 0;
 
 
-k = 1;                                                                       %sampling constant
+k = 2;                                                                       %sampling constant
 
-h = 0.2; %.265;
+h = 0.5; %.265;
 
 cooperative = true;                                                          % false -> non-cooperative MMSE baseline
 
 
 number_agents = 100;
 number_anchors = 13;
-number_iterations = 6;                      % the paper's Fig. 14 runs to 10
+number_iterations = 10;                      % the paper's Fig. 14 runs to 10
 err = zeros(number_agents, number_iterations);
 
 square_side = 100;
@@ -21,7 +21,7 @@ square_side = 100;
 intranode_sample = 2000;                                                     %lets try not to break the code
 internode_sample = 500;
 
-max_detection_radius = 20;
+max_detection_radius = 19;
 
 anchors = anchors_data();
 agents = agents_data(number_agents, square_side);
