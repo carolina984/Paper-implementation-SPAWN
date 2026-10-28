@@ -6,14 +6,14 @@ b = 0;
 
 k = 1;                                                                       %sampling constant
 
-h = 0.265;
+h = 0.2; %.265;
 
 cooperative = true;                                                          % false -> non-cooperative MMSE baseline
 
 
 number_agents = 100;
 number_anchors = 13;
-number_iterations = 10;                      % the paper's Fig. 14 runs to 10
+number_iterations = 6;                      % the paper's Fig. 14 runs to 10
 err = zeros(number_agents, number_iterations);
 
 square_side = 100;
@@ -96,7 +96,6 @@ for f = 1:number_iterations
    
         for j = 1:1:number_anchors
             if range_to_anchors(i, j) ~= 0                                   %its a neighbor!
-                range_to_anchors(i, j)
                 b = b + 1;
                 message_anchor{b} = compute_message(bel_anchors{j}, internode_sample, intranode_sample, z_to_anchors(i, j), 0.1);
             end

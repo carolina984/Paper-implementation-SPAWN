@@ -8,7 +8,7 @@ flag = neighbor_belief(1, 4);
 
 for i = 1:1:intranode_samples
     theta = rand * 2 * pi;
-    message(i, 1:2) = neighbor_belief(i, 1:2) + ((range_measurement)) * [sin(theta), cos(theta)]; %+ noise
+    message(i, 1:2) = neighbor_belief(i, 1:2) + ((range_measurement)+ noise )* [sin(theta), cos(theta)]; %
     message(i, 3) = neighbor_belief(i, 3); %particle weight
 end
 message(1, 4) = flag;
